@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-interface AppState {
-  mode: "light" | "dark";
+interface IAppState {
+  innerWidth: number;
 }
 
 interface AppContextType {
-  state: AppState;
-  updateState: (newState: Partial<AppState>) => void;
+  state: IAppState;
+  updateState: (newState: Partial<IAppState>) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -16,9 +16,9 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, setState] = useState<AppState>({ mode: "light" });
+  const [state, setState] = useState<IAppState>({ innerWidth: 1024 });
 
-  const updateState = (newState: Partial<AppState>) => {
+  const updateState = (newState: Partial<IAppState>) => {
     setState((prevState) => ({ ...prevState, ...newState }));
   };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DarkThemeToggle,
   Flowbite,
@@ -9,7 +9,7 @@ import {
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
-  useThemeMode
+  useThemeMode,
 } from "flowbite-react";
 import Image from "next/image";
 
@@ -19,18 +19,21 @@ interface Props {
 
 const Header: React.FC<Props> = () => {
   const { mode } = useThemeMode();
+  const [logoClass, setLogoClass] = useState<string>("");
+
   useEffect(() => {
-    console.log(mode === "light");
+    setLogoClass(mode === "light" ? "" : "logo-dark");
   }, [mode]);
+
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className="mb-5">
       <NavbarBrand href="/">
         <Image
           src="/logo.png"
           width={64}
           height={64}
           alt="Picture of the author"
-          className={mode === "light" ? "" : "logo-dark"}
+          className={logoClass}
         />
       </NavbarBrand>
       <NavbarCollapse>
