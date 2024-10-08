@@ -1,70 +1,54 @@
 "use client";
 
-import { useAppContext } from "@/src/context/AppContext";
-import React from "react";
-import ButtonMode from "@/src/components/share/ButtonMode";
+import React, { useEffect } from "react";
+import {
+  DarkThemeToggle,
+  Flowbite,
+  Navbar,
+  NavbarBrand,
+  NavbarCollapse,
+  NavbarLink,
+  NavbarToggle,
+  useThemeMode
+} from "flowbite-react";
+import Image from "next/image";
 
 interface Props {
   title?: string;
 }
 
 const Header: React.FC<Props> = () => {
-  const { state } = useAppContext();
-
+  const { mode } = useThemeMode();
+  useEffect(() => {
+    console.log(mode === "light");
+  }, [mode]);
   return (
-    <div data-theme={state?.mode} className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Navbar fluid rounded>
+      <NavbarBrand href="/">
+        <Image
+          src="/logo.png"
+          width={64}
+          height={64}
+          alt="Picture of the author"
+          className={mode === "light" ? "" : "logo-dark"}
+        />
+      </NavbarBrand>
+      <NavbarCollapse>
+        <NavbarLink href="#" active>
+          Home
+        </NavbarLink>
+        <NavbarLink href="#">About</NavbarLink>
+        <NavbarLink href="#">Services</NavbarLink>
+        <NavbarLink href="#">Pricing</NavbarLink>
+        <NavbarLink href="#">Contact</NavbarLink>
+      </NavbarCollapse>
+      <div className="flex md:order-2">
+        <Flowbite>
+          <DarkThemeToggle />
+        </Flowbite>
+        <NavbarToggle />
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <a>Item 2</a>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <ButtonMode />
-      </div>
-    </div>
+    </Navbar>
   );
 };
 
