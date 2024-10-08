@@ -37,10 +37,10 @@ const Header: React.FC<Props> = () => {
         />
       </NavbarBrand>
       <NavbarCollapse>
-        <NavbarLink href="#" active>
+        <NavbarLink href="/" active>
           Home
         </NavbarLink>
-        <NavbarLink href="#">About</NavbarLink>
+        <NavbarLink href="/about">About</NavbarLink>
         <NavbarLink href="#">Services</NavbarLink>
         <NavbarLink href="#">Pricing</NavbarLink>
         <NavbarLink href="#">Contact</NavbarLink>

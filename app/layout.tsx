@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppContextProvider } from "@/src/context/AppContext";
 import Header from "@/src/components/header/Header";
 import ScreenSize from "@/src/components/share/ScreenSize";
+import FooterComponent from "@/src/components/footer/Footer";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <AppContextProvider>
           <Header />
           {children}
+          <FooterComponent />
           <ScreenSize />
         </AppContextProvider>
       </body>

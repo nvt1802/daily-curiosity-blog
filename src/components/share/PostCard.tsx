@@ -4,15 +4,21 @@ import { Card } from "flowbite-react";
 
 interface IProps {
   horizontal?: boolean;
+  urlImage?: string;
+  alt?: string;
 }
 
-const PostCard: React.FC<IProps> = ({ horizontal = false }) => {
+const PostCard: React.FC<IProps> = ({
+  horizontal = false,
+  urlImage = `https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg`,
+  alt = "thumnail",
+}) => {
   return (
     <Card
       href="#"
-      className="max-w-sm mx-auto flex flex-row sm:flex-col"
-      imgSrc="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg"
-      imgAlt="alt"
+      className="sm:max-w-sm mx-auto w-full"
+      imgSrc={urlImage}
+      imgAlt={alt}
       horizontal={horizontal}
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
