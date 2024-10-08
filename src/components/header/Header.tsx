@@ -12,6 +12,8 @@ import {
   useThemeMode,
 } from "flowbite-react";
 import Image from "next/image";
+import { useAppContext } from "@/src/context/AppContext";
+import { twMerge } from "tailwind-merge";
 
 interface Props {
   title?: string;
@@ -20,13 +22,18 @@ interface Props {
 const Header: React.FC<Props> = () => {
   const { mode } = useThemeMode();
   const [logoClass, setLogoClass] = useState<string>("");
+  const { state } = useAppContext();
 
   useEffect(() => {
     setLogoClass(mode === "light" ? "" : "logo-dark");
   }, [mode]);
 
   return (
-    <Navbar fluid rounded className="mb-5">
+    <Navbar
+      fluid
+      rounded
+      className={twMerge("mb-5 shadow-lg", state.isSticky ? "" : "sticky top-0 z-40")}
+    >
       <NavbarBrand href="/">
         <Image
           src="/logo.png"

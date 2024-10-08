@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "flowbite-react";
+import { Badge, Card } from "flowbite-react";
 
 interface IProps {
   horizontal?: boolean;
@@ -16,11 +16,12 @@ const PostCard: React.FC<IProps> = ({
   return (
     <Card
       href="#"
-      className="sm:max-w-sm mx-auto w-full"
+      className="sm:max-w-sm mx-auto w-full relative"
       imgSrc={urlImage}
       imgAlt={alt}
       horizontal={horizontal}
     >
+      <Badge color="info" size="sm" className="absolute top-2 left-2">Blogs</Badge>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Noteworthy technology acquisitions 2021
       </h5>

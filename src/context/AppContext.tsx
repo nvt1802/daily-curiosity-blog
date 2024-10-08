@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface IAppState {
   innerWidth: number;
+  isSticky: boolean;
 }
 
 interface AppContextType {
@@ -16,7 +17,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, setState] = useState<IAppState>({ innerWidth: 1024 });
+  const [state, setState] = useState<IAppState>({
+    innerWidth: 1024,
+    isSticky: true,
+  });
 
   const updateState = (newState: Partial<IAppState>) => {
     setState((prevState) => ({ ...prevState, ...newState }));

@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { AppContextProvider } from "@/src/context/AppContext";
 import Header from "@/src/components/header/Header";
-import ScreenSize from "@/src/components/share/ScreenSize";
+import Global from "@/src/components/share/Global";
 import FooterComponent from "@/src/components/footer/Footer";
 import Newsletter from "@/src/components/Newsletter";
 const geistSans = localFont({
@@ -37,7 +37,7 @@ export default function RootLayout({
           {children}
           <Newsletter />
           <FooterComponent />
-          <ScreenSize />
+          <Global />
         </AppContextProvider>
       </body>
     </html>
