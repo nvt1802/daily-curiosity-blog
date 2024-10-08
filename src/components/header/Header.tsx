@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useAppContext } from "@/src/context/AppContext";
 import {
   DarkThemeToggle,
-  Flowbite,
+  Drawer,
   Navbar,
   NavbarBrand,
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
-  useThemeMode,
+  useThemeMode
 } from "flowbite-react";
 import Image from "next/image";
-import { useAppContext } from "@/src/context/AppContext";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -21,8 +21,11 @@ interface Props {
 
 const Header: React.FC<Props> = () => {
   const { mode } = useThemeMode();
-  const [logoClass, setLogoClass] = useState<string>("");
   const { state } = useAppContext();
+  const [logoClass, setLogoClass] = useState<string>("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
     setLogoClass(mode === "light" ? "" : "logo-dark");
@@ -32,7 +35,10 @@ const Header: React.FC<Props> = () => {
     <Navbar
       fluid
       rounded
-      className={twMerge("mb-5 shadow-lg", state.isSticky ? "" : "sticky top-0 z-40")}
+      className={twMerge(
+        "mb-5 shadow-lg",
+        state.isSticky ? "" : "sticky top-0 z-40"
+      )}
     >
       <NavbarBrand href="/">
         <Image
@@ -52,12 +58,32 @@ const Header: React.FC<Props> = () => {
         <NavbarLink href="#">Pricing</NavbarLink>
         <NavbarLink href="#">Contact</NavbarLink>
       </NavbarCollapse>
+
       <div className="flex md:order-2">
-        <Flowbite>
+        <NavbarCollapse>
           <DarkThemeToggle />
-        </Flowbite>
-        <NavbarToggle />
+        </NavbarCollapse>
+        <NavbarToggle onClick={() => setIsOpen(true)} />
       </div>
+      <Drawer open={isOpen} onClose={handleClose}>
+        <Drawer.Header title="" />
+        <Drawer.Items className="h-[calc(100%-40px)]">
+          <div className="flex flex-col justify-between h-full">
+            <div className="menu">
+              <NavbarLink href="/" active>
+                Home
+              </NavbarLink>
+              <NavbarLink href="/about">About</NavbarLink>
+              <NavbarLink href="#">Services</NavbarLink>
+              <NavbarLink href="#">Pricing</NavbarLink>
+              <NavbarLink href="#">Contact</NavbarLink>
+            </div>
+            <div>
+              <DarkThemeToggle />
+            </div>
+          </div>
+        </Drawer.Items>
+      </Drawer>
     </Navbar>
   );
 };

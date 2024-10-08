@@ -30,3 +30,7 @@ body {
   filter: brightness(0) saturate(100%) invert(95%) sepia(100%) saturate(21%)
     hue-rotate(357deg) brightness(104%) contrast(107%);
 }
+
+.menu > li {
+  list-style-type: none;
+}
