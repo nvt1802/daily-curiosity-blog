@@ -11,7 +11,9 @@ export default function Home() {
     <>
       <div className="flex flex-col gap-5">
         <HeroBanner />
-        <LatestPost />
+        <div className="mx-4">
+          <LatestPost />
+        </div>
       </div>
     </>
   );
