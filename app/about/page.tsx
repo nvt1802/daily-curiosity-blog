@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import Head from "next/head";
+
+export const metadata: Metadata = {
+  title: "About Page - Daily Curiosity",
+};
 
 const About = () => {
   return (

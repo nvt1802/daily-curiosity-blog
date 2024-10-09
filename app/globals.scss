@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.logo-dark {
+  filter: brightness(0) saturate(100%) invert(95%) sepia(100%) saturate(21%) hue-rotate(357deg) brightness(104%) contrast(107%);
+}
+
+.menu>li {
+  list-style-type: none;
+}
+
+.rich-text {
+  @apply space-y-6;
+
+  h2 {
+    @apply text-xl font-semibold;
+  }
+
+  blockquote {
+    font-style: italic;
+    border-left: 4px solid #3498db;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background-color: #f5f8fa;
+    color: #555;
+    border-radius: 5px;
+  }
+
+  blockquote p {
+    margin: 0;
+  }
+
+  blockquote::before {
+    content: '“';
+    font-size: 2rem;
+    line-height: 0;
+    vertical-align: -0.4rem;
+    color: #3498db;
+    margin-right: 0.5rem;
+  }
+
+  blockquote::after {
+    content: '”';
+    font-size: 2rem;
+    line-height: 0;
+    vertical-align: -0.4rem;
+    color: #3498db;
+    margin-left: 0.5rem;
+  }
+
+  img {
+    @apply mx-auto;
+  }
+}
