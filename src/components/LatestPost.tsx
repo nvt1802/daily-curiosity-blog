@@ -2,9 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
+import { IPost } from "../types/posts";
 import PostCard from "./share/PostCard";
 
-const LatestPost = () => {
+interface IProps {
+  posts?: IPost[];
+}
+const LatestPost: React.FC<IProps> = ({ posts = [] }) => {
   const { state } = useAppContext();
   const [isHorizontal, setIsHorizontal] = useState(false);
 
@@ -12,12 +16,11 @@ const LatestPost = () => {
     setIsHorizontal(state.innerWidth < 640);
   }, [state]);
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   return (
     <>
       <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-7xl mx-auto">
-        {arr.map((_, index: number) => (
-          <PostCard key={index} horizontal={isHorizontal} />
+        {posts?.map((item, index: number) => (
+          <PostCard key={index} horizontal={isHorizontal} post={item} />
         ))}
       </div>
     </>

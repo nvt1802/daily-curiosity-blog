@@ -18,7 +18,7 @@ const Newsletter: React.FC<Props> = () => {
             Stay up to date with the roadmap progress, announcements and
             exclusive discounts feel free to sign up with your email.
           </p>
-          <form action="/">
+          <form action="/" method="post">
             <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
               <div className="relative w-full">
                 <label
