@@ -13,7 +13,7 @@ interface IProps {
 const PostCard: React.FC<IProps> = ({ horizontal = false, post }) => {
   return (
     <Card
-      href="/blog/test"
+      href={`/blog/${post?.slug}`}
       className="sm:max-w-sm mx-auto w-full relative"
       imgSrc={`${cloudinaryUrl}/c_fill,h_320,w_460/${post?.featured_image}`}
       imgAlt={post?.title}
