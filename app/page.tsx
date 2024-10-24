@@ -24,8 +24,9 @@ const Home = async () => {
   return (
     <>
       <div className="flex flex-col gap-5">
-        <HeroBanner />
-        <div className="mx-4">
+        <HeroBanner post={posts[0]} />
+        <div className="px-4 max-w-7xl mx-auto space-y-5 mt-4">
+          <h2 className="text-2xl lg:text-3xl font-bold">Lasted posts</h2>
           <LatestPost posts={posts} />
         </div>
       </div>

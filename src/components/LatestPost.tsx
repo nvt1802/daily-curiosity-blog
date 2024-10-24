@@ -18,7 +18,7 @@ const LatestPost: React.FC<IProps> = ({ posts = [] }) => {
 
   return (
     <>
-      <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-7xl mx-auto">
+      <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mx-auto">
         {posts?.map((item, index: number) => (
           <PostCard key={index} horizontal={isHorizontal} post={item} />
         ))}

@@ -42,19 +42,25 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
     <div className="flex flex-col gap-5">
       <div className="w-full max-h-[500px] relative">
         <Image
-          src={`${cloudinaryUrl}/${post?.featured_image ?? ""}`}
+          src={
+            post?.featured_image
+              ? `${cloudinaryUrl}/${post?.featured_image}`
+              : ""
+          }
           alt={post?.title ?? ""}
           className="w-full max-h-[500px] object-cover"
           width={1900}
           height={1000}
         />
         <div className="absolute w-full h-full max-h-[500px] overlay top-0">
-          <div className="w-full h-full flex flex-col justify-end pb-32">
-            <div className="mx-auto space-y-4 max-w-7xl w-full">
+          <div className="w-full h-full flex flex-col justify-end pb-3 xs:pb-5 sm:pb-8 xmd:pb-32">
+            <div className="mx-auto space-y-4 px-4 lg:px-5 xl:px-0 max-w-7xl w-full">
               <Badge color="info" size="sm" className="w-fit">
                 {post?.categories?.name}
               </Badge>
-              <h1 className="text-3xl text-white">{post?.title}</h1>
+              <h1 className="text-sm xs:text-base sm:text-lg xmd:text-2xl lg:text-3xl text-white">
+                {post?.title}
+              </h1>
             </div>
           </div>
         </div>
