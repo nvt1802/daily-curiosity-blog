@@ -1,8 +1,10 @@
 import { IPost } from "@/src/types/posts";
 import { fetchPostBySlug } from "@/src/utils/api/posts";
+import { cloudinaryUrl } from "@/src/utils/constants/contants";
 import dayjs from "dayjs";
 import { Avatar, Badge } from "flowbite-react";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const revalidate = 60;
 export const dynamicParams = true;
@@ -37,13 +39,28 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <div className="flex flex-col mx-4">
-      <div className="max-w-7xl mx-auto space-y-5">
+    <div className="flex flex-col gap-5">
+      <div className="w-full max-h-[500px] relative">
+        <Image
+          src={`${cloudinaryUrl}/${post?.featured_image ?? ""}`}
+          alt={post?.title ?? ""}
+          className="w-full max-h-[500px] object-cover"
+          width={1900}
+          height={1000}
+        />
+        <div className="absolute w-full h-full max-h-[500px] overlay top-0">
+          <div className="w-full h-full flex flex-col justify-end pb-32">
+            <div className="mx-auto space-y-4 max-w-7xl w-full">
+              <Badge color="info" size="sm" className="w-fit">
+                {post?.categories?.name}
+              </Badge>
+              <h1 className="text-3xl text-white">{post?.title}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="max-w-7xl space-y-5 mx-auto px-4">
         <div className="w-full flex flex-col gap-4">
-          <Badge color="info" size="sm" className="w-fit">
-            Blogs
-          </Badge>
-          <h1 className="text-3xl">{post?.title}</h1>
           <div className="inline-flex justify-between gap-8 w-fit">
             <div className="inline-flex gap-3">
               <Avatar

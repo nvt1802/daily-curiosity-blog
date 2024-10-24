@@ -34,6 +34,31 @@ body {
   list-style-type: none;
 }
 
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #f4f4f4;
+  border-radius: 20px;
+  background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a9aeb1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a9aeb1;
+}
+
+.overlay {
+  background: linear-gradient(180deg, transparent, #101010);
+}
+
 .rich-text {
   @apply space-y-4;
 

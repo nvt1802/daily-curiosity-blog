@@ -22,7 +22,7 @@ const PostCard: React.FC<IProps> = ({ horizontal = false, post }) => {
       <Badge color="info" size="sm" className="absolute top-2 left-2">
         {post?.categories.name}
       </Badge>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 justify-between h-full">
         <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">
           {post?.title}
         </h5>
