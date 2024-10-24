@@ -70,7 +70,11 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
           <div className="inline-flex justify-between gap-8 w-fit">
             <div className="inline-flex gap-3">
               <Avatar
-                img="/zhou-shiyu.png"
+                img={
+                  post?.users?.profile_picture
+                    ? `${cloudinaryUrl}/${post?.users?.profile_picture}`
+                    : ""
+                }
                 alt="avatar of Jese"
                 size="sm"
                 rounded
