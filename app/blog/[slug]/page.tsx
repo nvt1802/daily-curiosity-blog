@@ -13,15 +13,27 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const post = await fetchPostBySlug(params?.slug);
-  return {
-    title: `${post?.seo_title} | Daily Curiosity`,
-    description: `${post?.excerpt}`,
-    robots: {
-      index: post?.is_index,
-      follow: post?.is_follow,
-    },
-  };
+  try {
+    const post = await fetchPostBySlug(params?.slug);
+    return {
+      title: `${post?.seo_title} | Daily Curiosity`,
+      description: `${post?.excerpt}`,
+      robots: {
+        index: post?.is_index,
+        follow: post?.is_follow,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      title: `Page not found | Daily Curiosity`,
+      description: ``,
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
 }
 
 const BlogDetail = async ({ params }: { params: { slug: string } }) => {
@@ -35,7 +47,11 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
       "HH:mm MMMM D, YYYY"
     );
   } catch (error) {
-    console.error(error);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (error?.response.status === 404) {
+      return null;
+    }
   }
 
   return (
