@@ -144,6 +144,10 @@ body {
     text-decoration: underline;
   }
 
+  hr {
+    border-style: dashed;
+  }
+
   h1,
   h2,
   h3,
@@ -161,8 +165,16 @@ body {
     @apply text-2xl;
   }
 
-  img {
-    @apply max-w-full w-full h-auto block my-2 mx-0;
+  figure {
+    @apply flex flex-col;
+
+    img {
+      @apply max-w-full w-full h-auto block my-2 mx-auto object-cover;
+    }
+
+    figcaption {
+      @apply text-sm italic mx-auto;
+    }
   }
 
   pre {
