@@ -38,4 +38,7 @@ export const defaultMetadata: Metadata = {
   alternates: {
     canonical: "https://dailycuriosityblog.com/",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };

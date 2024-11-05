@@ -29,7 +29,7 @@ const FooterComponent = () => {
   }, [mode]);
 
   return (
-    <Footer container>
+    <Footer container className="mt-5">
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>

@@ -60,7 +60,7 @@ body {
 }
 
 .rich-text {
-  @apply space-y-4;
+  @apply space-y-4; 
 
   blockquote {
     font-style: italic;
@@ -74,6 +74,7 @@ body {
 
   blockquote p {
     margin: 0;
+    @apply dark:text-white;
   }
 
   blockquote::before {
@@ -99,18 +100,21 @@ body {
     line-height: 1.6;
     margin-bottom: 0.5em;
     color: #333;
+    @apply dark:text-white;
   }
 
   b,
   strong {
     font-weight: bold;
     color: #000;
+    @apply dark:text-white;
   }
 
   i,
   em {
     font-style: italic;
     color: #333;
+    @apply dark:text-white;
   }
 
   u {
@@ -121,6 +125,7 @@ body {
   ol {
     margin-left: 2em;
     padding-left: 1em;
+    @apply dark:text-white;
   }
 
   ul {
@@ -154,7 +159,7 @@ body {
   h4,
   h5,
   h6 {
-    @apply font-bold my-2 mx-0;
+    @apply font-bold my-2 mx-0 dark:text-white;;
   }
 
   h1 {

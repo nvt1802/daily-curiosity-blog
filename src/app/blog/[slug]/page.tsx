@@ -1,6 +1,6 @@
-import { IPost } from "@/src/types/posts";
-import { fetchPostBySlug } from "@/src/utils/api/posts";
-import { cloudinaryUrl } from "@/src/utils/constants/contants";
+import { IPost } from "@/types/posts";
+import { fetchPostBySlug } from "@/utils/api/posts";
+import { cloudinaryUrl } from "@/utils/constants/contants";
 import dayjs from "dayjs";
 import { Avatar, Badge } from "flowbite-react";
 import { Metadata } from "next";
@@ -55,8 +55,8 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <div className="flex flex-col gap-5">
-      <div className="w-full max-h-[500px] relative">
+    <div className="flex flex-col gap-5 dark:bg-gray-800">
+      <div className="w-full max-h-[500px] relative -mt-5">
         <Image
           src={
             post?.featured_image
@@ -81,7 +81,7 @@ const BlogDetail = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl space-y-5 mx-auto px-4">
+      <div className="max-w-7xl space-y-5 mx-auto px-4 pb-4">
         <div className="w-full flex flex-col gap-4">
           <div className="inline-flex justify-between gap-8 w-fit">
             <div className="inline-flex gap-3">

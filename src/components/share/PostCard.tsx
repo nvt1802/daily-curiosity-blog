@@ -1,7 +1,7 @@
 "use client";
 
-import { IPost } from "@/src/types/posts";
-import { cloudinaryUrl } from "@/src/utils/constants/contants";
+import { IPost } from "@/types/posts";
+import { cloudinaryUrl } from "@/utils/constants/contants";
 import dayjs from "dayjs";
 import { Avatar, Badge, Card } from "flowbite-react";
 import Image from "next/image";
@@ -21,7 +21,7 @@ const PostCard: React.FC<IProps> = ({ horizontal = false, post }) => {
         <Image
           src={`${cloudinaryUrl}/c_fill,h_320,w_460/${post?.featured_image}`}
           alt={post?.title ?? ""}
-          className="w-full object-cover max-h-52"
+          className="w-full object-cover max-h-52 rounded-t-lg"
           width={1900}
           height={1000}
         />

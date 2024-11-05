@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppContext } from "@/src/context/AppContext";
+import { useAppContext } from "@/context/AppContext";
 import { useEffect, Fragment } from "react";
 
 const Global = () => {

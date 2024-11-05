@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.scss";
-import { AppContextProvider } from "@/src/context/AppContext";
-import Header from "@/src/components/header/Header";
-import Global from "@/src/components/share/Global";
-import FooterComponent from "@/src/components/footer/Footer";
-import Newsletter from "@/src/components/Newsletter";
-import { defaultMetadata } from "@/src/utils/constants/metadata";
+import "@/app/globals.scss";
+import { AppContextProvider } from "@/context/AppContext";
+import Header from "@/components/header/Header";
+import Global from "@/components/share/Global";
+import FooterComponent from "@/components/footer/Footer";
+import { defaultMetadata } from "@/utils/constants/metadata";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -35,7 +34,6 @@ export default function RootLayout({
         <AppContextProvider>
           <Header />
           {children}
-          <Newsletter />
           <FooterComponent />
           <Global />
         </AppContextProvider>

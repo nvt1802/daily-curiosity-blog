@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppContext } from "@/src/context/AppContext";
+import { useAppContext } from "@/context/AppContext";
 import {
   DarkThemeToggle,
   Drawer,
@@ -36,8 +36,8 @@ const Header: React.FC<Props> = () => {
       fluid
       rounded
       className={twMerge(
-        "mb-5 shadow-lg",
-        state.isSticky ? "" : "sticky top-0 z-40"
+        "mb-5 shadow-lg duration-300 transition-all",
+        state.isSticky ? "" : "sticky top-0 z-40 rounded-none"
       )}
     >
       <NavbarBrand href="/">
@@ -53,10 +53,7 @@ const Header: React.FC<Props> = () => {
         <NavbarLink href="/" active>
           Home
         </NavbarLink>
-        <NavbarLink href="/about">About</NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
+        <NavbarLink href="/blog">Blog</NavbarLink>
       </NavbarCollapse>
 
       <div className="flex md:order-2">

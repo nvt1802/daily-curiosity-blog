@@ -1,5 +1,5 @@
-import { IPostDetailResponse, IPostResponse } from "@/src/types/posts";
-import axiosInstance from "../axiosInstance";
+import { IPostDetailResponse, IPostResponse } from "@/types/posts";
+import axiosInstance from "@/utils/axiosInstance";
 
 const BaseUrl = process.env.NEXT_PUBLIC_CMS_API_URL;
 

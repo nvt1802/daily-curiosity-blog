@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import React from "react";
-import { cloudinaryUrl } from "@/src/utils/constants/contants";
-import { IPost } from "@/src/types/posts";
-import { Badge } from "flowbite-react";
+import { cloudinaryUrl } from "@/utils/constants/contants";
+import { IPost } from "@/types/posts";
+import { Badge, Button } from "flowbite-react";
+import Link from "next/link";
 
 interface Props {
   post?: IPost;
@@ -12,7 +13,7 @@ interface Props {
 
 const HeroBanner: React.FC<Props> = ({ post }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-gray-900 -mt-5">
       <div className="w-full max-h-[500px] relative">
         <Image
           src={
@@ -34,6 +35,17 @@ const HeroBanner: React.FC<Props> = ({ post }) => {
               <h1 className="text-sm xs:text-base sm:text-lg xmd:text-2xl lg:text-3xl text-white">
                 {post?.title}
               </h1>
+              <p>
+                <Link href={`/blog/${post?.slug}`}>
+                  <Button
+                    gradientDuoTone="greenToBlue"
+                    size="xs"
+                    className="px-4"
+                  >
+                    View
+                  </Button>
+                </Link>
+              </p>
             </div>
           </div>
         </div>
