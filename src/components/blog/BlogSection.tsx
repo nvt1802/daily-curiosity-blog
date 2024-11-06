@@ -1,8 +1,8 @@
 "use client";
 
 import { IPost } from "@/types/posts";
-import LastestCard from "@/components/home/LastestCard";
 import { Fragment } from "react";
+import BlogCard from "@/components/blog/BlogCard";
 
 interface IProps {
   posts?: IPost[];
@@ -10,13 +10,10 @@ interface IProps {
 const BlogSection: React.FC<IProps> = ({ posts = [] }) => {
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 sm:grid xs:grid-cols-2 xmd:grid-cols-3 px-4">
         {posts?.map((item, index: number) => (
           <Fragment key={index}>
-            <LastestCard post={item} />
-            {index < posts.length - 1 && (
-              <div className="border-b border-dashed"></div>
-            )}
+            <BlogCard post={item} />
           </Fragment>
         ))}
       </div>
