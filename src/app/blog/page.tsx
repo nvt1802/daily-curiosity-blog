@@ -14,10 +14,11 @@ export const dynamicParams = true;
 
 const BlogListPage = async () => {
   let posts: IPost[] = [];
-
+  let total: number = 1;
   try {
-    const { items } = await fetchPosts(1);
+    const { items, totalPages } = await fetchPosts(1);
     posts = items;
+    total = totalPages;
   } catch (error) {
     console.error(error);
   }
@@ -25,7 +26,7 @@ const BlogListPage = async () => {
   return (
     <>
       <BlogWrapper banner={<HeroBanner post={posts[0]} />}>
-        <BlogSection posts={posts} />
+        <BlogSection posts={posts} totalPages={total} />
       </BlogWrapper>
     </>
   );

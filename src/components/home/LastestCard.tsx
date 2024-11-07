@@ -13,12 +13,12 @@ interface IProps {
 
 const LastestCard: React.FC<IProps> = ({ post }) => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 dark:text-white">
       <Link href={`/blog/${post?.slug}`}>
         <Image
-          src={`${cloudinaryUrl}/c_fill,h_550,w_860/${post?.featured_image}`}
+          src={`${cloudinaryUrl}/c_fill,h_450,w_860/${post?.featured_image}`}
           alt={post?.title ?? ""}
-          className="w-full object-cover max-h-96 rounded-lg"
+          className="w-full object-cover max-h-80 rounded-lg"
           width={1900}
           height={1000}
         />
@@ -32,6 +32,9 @@ const LastestCard: React.FC<IProps> = ({ post }) => {
           <span className="my-auto">{post?.view_count ?? 0}</span>
         </p>
       </div>
+      <p className="text-sm dark:text-white line-clamp-2 xs:line-clamp-3 lg:line-clamp-none">
+        {post?.excerpt}
+      </p>
       <p className="text-sm">
         {dayjs(post?.published_at).format("DD-MM-YYYY")}
       </p>

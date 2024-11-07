@@ -6,6 +6,7 @@ import Header from "@/components/header/Header";
 import Global from "@/components/share/Global";
 import FooterComponent from "@/components/footer/Footer";
 import { defaultMetadata } from "@/utils/constants/metadata";
+import QueryClientWrapper from "@/components/QueryClientWrapper";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -29,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-gray-800`}
       >
         <AppContextProvider>
           <Header />
-          {children}
+          <QueryClientWrapper>{children}</QueryClientWrapper>
           <FooterComponent />
           <Global />
         </AppContextProvider>

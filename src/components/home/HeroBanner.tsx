@@ -32,9 +32,10 @@ const HeroBanner: React.FC<Props> = ({ post }) => {
               <Badge color="info" size="sm" className="w-fit">
                 {post?.categories?.name}
               </Badge>
-              <h1 className="text-sm xs:text-base sm:text-lg xmd:text-2xl lg:text-3xl text-white">
+              <h1 className="text-sm xs:text-base sm:text-lg xmd:text-2xl lg:text-4xl text-white">
                 {post?.title}
               </h1>
+              <p className="text-sm text-white line-clamp-2 xs:line-clamp-3 lg:line-clamp-none">{post?.excerpt}</p>
               <p>
                 <Link href={`/blog/${post?.slug}`}>
                   <Button

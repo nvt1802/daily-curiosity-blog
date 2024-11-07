@@ -13,7 +13,7 @@ interface IProps {
 
 const PopularCard: React.FC<IProps> = ({ post }) => {
   return (
-    <div className="flex flex-row shadow-mdflex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 md:max-w-xl md:flex-row hover:bg-gray-100 dark:hover:bg-gray-700 mx-auto w-full relative gap-1.5 xmd:gap-3 max-h-28 xmd:max-h-[140px]">
+    <div className="flex flex-row shadow-md flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 md:max-w-xl md:flex-row hover:bg-gray-100 dark:hover:bg-gray-700 mx-auto w-full relative gap-1.5 xmd:gap-3 max-h-28 xmd:max-h-[140px]">
       <Link href={`/blog/${post?.slug}`}>
         <Image
           src={`${cloudinaryUrl}/c_fill,h_160,w_160/${post?.featured_image}`}
