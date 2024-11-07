@@ -14,6 +14,7 @@ interface IProps {
 const BlogSection: React.FC<IProps> = ({ posts = [], totalPages = 1 }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [postListing, setPostListing] = useState<IPost[]>(posts);
+  const [isLoadMore, setLoadMore] = useState<boolean>(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["posts", currentPage],
@@ -21,11 +22,16 @@ const BlogSection: React.FC<IProps> = ({ posts = [], totalPages = 1 }) => {
   });
 
   useEffect(() => {
-    setPostListing(posts);
+    if (isLoadMore && !!data?.items.length) {
+      setPostListing([...postListing, ...data?.items]);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, isLoadMore]);
 
-  const onLoadMore = () => setCurrentPage(currentPage + 1);
+  const onLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+    setLoadMore(true);
+  };
 
   return (
     <>
